@@ -24,7 +24,10 @@ let package = Package(
                 .product(name: "Parsing", package: "swift-parsing")
             ],
             path: "Sources",
-            resources: [.copy("Resources/PrivacyInfo.xcprivacy")]
+            resources: [
+                .copy("Resources/PrivacyInfo.xcprivacy"),
+                .copy("Resources/entities.json")
+            ]
         ),
         .testTarget(
             name: "WebVTTParserTests",
