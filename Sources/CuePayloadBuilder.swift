@@ -10,7 +10,8 @@ struct CuePayloadBuilder {
         ClassComponentBuilder(),
         VoiceComponentBuilder(),
         TimestampComponentBuilder(),
-        LanguageComponentBuilder()
+        LanguageComponentBuilder(),
+        CueStyleComponentBuilder()
     ]
 
     func parse(_ text: String) throws -> WebVTT.CuePayload {
@@ -460,6 +461,40 @@ private struct LanguageComponentBuilder: CuePayloadComponentBuilder {
         let component = WebVTT.CuePayload.Component.language(
             classes: classes,
             locale: locale,
+            children: children.components
+        )
+
+        return (match.range, component)
+    }
+}
+
+private struct CueStyleComponentBuilder: CuePayloadComponentBuilder {
+    private let nameReference = Reference(Substring.self)
+    private let textReference = Reference(Substring.self)
+
+    private var regex: Regex<(Substring, Substring, Substring)> {
+        Regex {
+            "<"
+            Capture(as: nameReference) {
+                ZeroOrMore(.any)
+            }
+            ">"
+            Capture(as: textReference) {
+                ZeroOrMore(.any)
+            }
+            "</"
+            nameReference
+            ">"
+        }
+        .repetitionBehavior(.reluctant)
+        .ignoresCase()
+    }
+
+    func build(_ text: String) throws -> (range: Range<String.Index>, component: WebVTT.CuePayload.Component)? {
+        guard let match = try regex.firstMatch(in: text) else { return nil }
+        let children = try CuePayloadBuilder().parse(String(match[textReference]))
+        let component = WebVTT.CuePayload.Component.class(
+            name: String(match[nameReference]),
             children: children.components
         )
 

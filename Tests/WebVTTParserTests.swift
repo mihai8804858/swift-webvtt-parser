@@ -75,7 +75,12 @@ final class WebVTTParserTests: XCTestCase {
         This last line may not translate well.
 
         12:34:56.789 --> 23:46:07.890
-        Seriously...
+        <green>Seriously...</green>
+
+        c0000001
+        00:00:05.550 --> 00:00:06.760 line:90% align:center
+        <Default><b>[JOO JAE-HWAN]
+        We gotta get outta here!</b></Default>
 
         12:34:56.789 --> 23:46:07.890 vertical:rl
         <14:34:56.789>This cue has &nbsp;one <34:56.789>setting
@@ -174,7 +179,16 @@ final class WebVTTParserTests: XCTestCase {
             """)
             note("This last line may not translate well.")
             cue(timing: 45296.789...85567.89) {
-                plain("Seriously...")
+                styleClass(name: "green") {
+                    plain("Seriously...")
+                }
+            }
+            cue(identifier: "c0000001", timing: 5.55...6.76, settings: [.linePercentage(90), .align(.center)]) {
+                styleClass(name: "Default") {
+                    bold {
+                        plain("[JOO JAE-HWAN]\nWe gotta get outta here!")
+                    }
+                }
             }
             cue(timing: 45296.789...85567.89, settings: [.vertical(.rl)]) {
                 timestamp(
@@ -332,7 +346,16 @@ final class WebVTTParserTests: XCTestCase {
             """)
             note("This last line may not translate well.")
             cue(timing: 45296.789...85567.89) {
-                plain("Seriously...")
+                styleClass(name: "green") {
+                    plain("Seriously...")
+                }
+            }
+            cue(identifier: "c0000001", timing: 5.55...6.76, settings: [.linePercentage(90), .align(.center)]) {
+                styleClass(name: "Default") {
+                    bold {
+                        plain("[JOO JAE-HWAN]\nWe gotta get outta here!")
+                    }
+                }
             }
             cue(timing: 45296.789...85567.89, settings: [.vertical(.rl)]) {
                 timestamp(
@@ -489,7 +512,12 @@ final class WebVTTParserTests: XCTestCase {
         This last line may not translate well.
 
         12:34:56.789 --> 23:46:07.890
-        Seriously...
+        <c.green>Seriously...</c>
+
+        c0000001
+        00:05.550 --> 00:06.760 line:90% align:center
+        <c.Default><b>[JOO JAE-HWAN]
+        We gotta get outta here!</b></c>
 
         12:34:56.789 --> 23:46:07.890 vertical:rl
         <14:34:56.789>This cue has &nbsp;one <34:56.789>setting
