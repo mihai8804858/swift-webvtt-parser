@@ -7,7 +7,7 @@ public struct WebVTTParser {
     public init() {}
 
     public func parse(_ content: String) throws -> WebVTT {
-        try parser.parse(content.trimmingEdges(while: \.isNewline))
+        try parser.parse(content.trimmingEdges(while: \.isNewline).trimmingBOM())
     }
 
     public func print(_ srt: WebVTT) throws -> String {
