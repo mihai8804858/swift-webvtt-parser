@@ -1,4 +1,4 @@
-// swift-tools-version:6.0
+// swift-tools-version:5.10
 
 import PackageDescription
 
@@ -28,9 +28,6 @@ let package = Package(
             resources: [
                 .copy("Resources/PrivacyInfo.xcprivacy"),
                 .copy("Resources/entities.json")
-            ],
-            swiftSettings: [
-                .enableExperimentalFeature("StrictConcurrency")
             ]
         ),
         .testTarget(
@@ -43,5 +40,5 @@ let package = Package(
             resources: [.copy("Resources/Subtitles")]
         )
     ],
-    swiftLanguageModes: [.v6]
+    swiftLanguageVersions: [.v5]
 )

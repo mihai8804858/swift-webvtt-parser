@@ -1,3 +1,3 @@
-struct WebVTTParsingError: Error {
+struct WebVTTParsingError: Error, Sendable {
     let message: String
 }

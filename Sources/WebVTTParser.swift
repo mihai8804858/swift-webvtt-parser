@@ -1,7 +1,7 @@
 import Foundation
 import Parsing
 
-public struct WebVTTParser {
+public struct WebVTTParser: Sendable {
     private let parser = ElementsParser()
 
     public init() {}
@@ -15,7 +15,7 @@ public struct WebVTTParser {
     }
 }
 
-struct ElementsParser: ParserPrinter {
+struct ElementsParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT> {
         ParsePrint(.memberwise(WebVTT.init(header:elements:))) {
             HeaderParser()
@@ -41,7 +41,7 @@ struct ElementsParser: ParserPrinter {
     }
 }
 
-struct HeaderParser: ParserPrinter {
+struct HeaderParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Header> {
         ParsePrint(.memberwise(WebVTT.Header.init(text:metadata:))) {
             "WEBVTT"
@@ -55,7 +55,7 @@ struct HeaderParser: ParserPrinter {
     }
 }
 
-struct HeaderMetadataParser: ParserPrinter {
+struct HeaderMetadataParser: ParserPrinter, Sendable {
     func parse(_ input: inout Substring) throws -> [WebVTT.HeaderMetadata] {
         let substring = input.prefix(upTo: .newlines, count: 2)
         input.removeFirst(substring.count)
@@ -84,7 +84,7 @@ struct HeaderMetadataParser: ParserPrinter {
     }
 }
 
-struct NoteParser: ParserPrinter {
+struct NoteParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Note> {
         ParsePrint(.memberwise(WebVTT.Note.init(text:))) {
             "NOTE"
@@ -97,7 +97,7 @@ struct NoteParser: ParserPrinter {
     }
 }
 
-struct StyleParser: ParserPrinter {
+struct StyleParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Style> {
         ParsePrint(.memberwise(WebVTT.Style.init(text:))) {
             "STYLE"
@@ -107,7 +107,7 @@ struct StyleParser: ParserPrinter {
     }
 }
 
-struct RegionParser: ParserPrinter {
+struct RegionParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Region> {
         ParsePrint(.memberwise(WebVTT.Region.init(settings:))) {
             OneOf {
@@ -130,7 +130,7 @@ struct RegionParser: ParserPrinter {
     }
 }
 
-struct RegionSettingParser: ParserPrinter {
+struct RegionSettingParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.RegionSetting> {
         ParsePrint {
             OneOf {
@@ -145,7 +145,7 @@ struct RegionSettingParser: ParserPrinter {
     }
 }
 
-struct RegionIDParser: ParserPrinter {
+struct RegionIDParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.RegionSetting> {
         ParsePrint {
             "id"
@@ -161,7 +161,7 @@ struct RegionIDParser: ParserPrinter {
     }
 }
 
-struct RegionLinesParser: ParserPrinter {
+struct RegionLinesParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.RegionSetting> {
         ParsePrint {
             "lines"
@@ -177,7 +177,7 @@ struct RegionLinesParser: ParserPrinter {
     }
 }
 
-struct RegionWidthParser: ParserPrinter {
+struct RegionWidthParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.RegionSetting> {
         ParsePrint {
             "width"
@@ -194,7 +194,7 @@ struct RegionWidthParser: ParserPrinter {
     }
 }
 
-struct RegionScrollParser: ParserPrinter {
+struct RegionScrollParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.RegionSetting> {
         ParsePrint {
             "scroll"
@@ -210,7 +210,7 @@ struct RegionScrollParser: ParserPrinter {
     }
 }
 
-struct RegionAnchorSettingParser: ParserPrinter {
+struct RegionAnchorSettingParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.RegionSetting> {
         ParsePrint {
             "regionanchor"
@@ -226,7 +226,7 @@ struct RegionAnchorSettingParser: ParserPrinter {
     }
 }
 
-struct RegionViewPortAnchorSettingParser: ParserPrinter {
+struct RegionViewPortAnchorSettingParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.RegionSetting> {
         ParsePrint {
             "viewportanchor"
@@ -242,7 +242,7 @@ struct RegionViewPortAnchorSettingParser: ParserPrinter {
     }
 }
 
-struct RegionAnchorParser: ParserPrinter {
+struct RegionAnchorParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.RegionAnchor> {
         ParsePrint(.memberwise(WebVTT.RegionAnchor.init(xPercentage:yPercentage:))) {
             Int.parser()
@@ -258,7 +258,7 @@ struct RegionAnchorParser: ParserPrinter {
     }
 }
 
-struct CueParser: ParserPrinter {
+struct CueParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Cue> {
         ParsePrint(.memberwise(WebVTT.Cue.init(metadata:payload:))) {
             CueMetadataParser()
@@ -267,7 +267,7 @@ struct CueParser: ParserPrinter {
     }
 }
 
-struct CueMetadataParser: ParserPrinter {
+struct CueMetadataParser: ParserPrinter, Sendable {
     var body: some Parser<Substring, WebVTT.CueMetadata> {
         Optionally {
             TimingParser()
@@ -306,7 +306,7 @@ struct CueMetadataParser: ParserPrinter {
     }
 }
 
-struct TimingParser: ParserPrinter {
+struct TimingParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Timing> {
         ParsePrint(.memberwise(WebVTT.Timing.init(start:end:))) {
             TimeParser()
@@ -322,7 +322,7 @@ struct TimingParser: ParserPrinter {
     }
 }
 
-struct TimeParser: ParserPrinter {
+struct TimeParser: ParserPrinter, Sendable {
     private func isHorizontalWhitespace(_ char: Character) -> Bool {
         [
             Character(" "),
@@ -369,7 +369,7 @@ struct TimeParser: ParserPrinter {
     }
 }
 
-struct TextParser: ParserPrinter {
+struct TextParser: ParserPrinter, Sendable {
     let terminator: CharacterSet
     let count: Int
     let includeTerminator: Bool
@@ -403,7 +403,7 @@ struct TextParser: ParserPrinter {
     }
 }
 
-struct CuePayloadParser: ParserPrinter {
+struct CuePayloadParser: ParserPrinter, Sendable {
     func parse(_ input: inout Substring) throws -> WebVTT.CuePayload {
         let prefix = input.prefix(upTo: .newlines, count: 2)
         let text = try CuePayloadBuilder().parse(String(prefix))
@@ -417,7 +417,7 @@ struct CuePayloadParser: ParserPrinter {
     }
 }
 
-struct SettingsParser: ParserPrinter {
+struct SettingsParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, [WebVTT.Setting]> {
         ParsePrint {
             Many {
@@ -442,7 +442,7 @@ struct SettingsParser: ParserPrinter {
     }
 }
 
-struct SettingParser: ParserPrinter {
+struct SettingParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Setting> {
         ParsePrint {
             OneOf {
@@ -458,7 +458,7 @@ struct SettingParser: ParserPrinter {
     }
 }
 
-struct DirectionParser: ParserPrinter {
+struct DirectionParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Setting> {
         ParsePrint {
             "vertical"
@@ -471,7 +471,7 @@ struct DirectionParser: ParserPrinter {
     }
 }
 
-struct LineNumberParser: ParserPrinter {
+struct LineNumberParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Setting> {
         ParsePrint {
             "line"
@@ -484,7 +484,7 @@ struct LineNumberParser: ParserPrinter {
     }
 }
 
-struct LinePercentageParser: ParserPrinter {
+struct LinePercentageParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Setting> {
         ParsePrint {
             "line"
@@ -498,7 +498,7 @@ struct LinePercentageParser: ParserPrinter {
     }
 }
 
-struct PositionParser: ParserPrinter {
+struct PositionParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Setting> {
         ParsePrint {
             "position"
@@ -512,7 +512,7 @@ struct PositionParser: ParserPrinter {
     }
 }
 
-struct SizeParser: ParserPrinter {
+struct SizeParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Setting> {
         ParsePrint {
             "size"
@@ -526,7 +526,7 @@ struct SizeParser: ParserPrinter {
     }
 }
 
-struct AlignmentParser: ParserPrinter {
+struct AlignmentParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Setting> {
         ParsePrint {
             "align"
@@ -539,7 +539,7 @@ struct AlignmentParser: ParserPrinter {
     }
 }
 
-struct RegionIdentifierParser: ParserPrinter {
+struct RegionIdentifierParser: ParserPrinter, Sendable {
     var body: some ParserPrinter<Substring, WebVTT.Setting> {
         ParsePrint {
             "region"

@@ -1,6 +1,6 @@
-import RegexBuilder
+@preconcurrency import RegexBuilder
 
-struct CuePayloadBuilder {
+struct CuePayloadBuilder: Sendable {
     private let builders: [CuePayloadComponentBuilder] = [
         BoldComponentBuilder(),
         ItalicComponentBuilder(),
@@ -104,11 +104,11 @@ struct CuePayloadBuilder {
     }
 }
 
-private protocol CuePayloadComponentBuilder {
+private protocol CuePayloadComponentBuilder: Sendable {
     func build(_ text: String) throws -> (range: Range<String.Index>, component: WebVTT.CuePayload.Component)?
 }
 
-private struct BoldComponentBuilder: CuePayloadComponentBuilder {
+private struct BoldComponentBuilder: CuePayloadComponentBuilder, Sendable {
     private let classesReference = Reference(Substring.self)
     private let textReference = Reference(Substring.self)
 
@@ -145,7 +145,7 @@ private struct BoldComponentBuilder: CuePayloadComponentBuilder {
     }
 }
 
-private struct ItalicComponentBuilder: CuePayloadComponentBuilder {
+private struct ItalicComponentBuilder: CuePayloadComponentBuilder, Sendable {
     private let classesReference = Reference(Substring.self)
     private let textReference = Reference(Substring.self)
 
@@ -182,7 +182,7 @@ private struct ItalicComponentBuilder: CuePayloadComponentBuilder {
     }
 }
 
-private struct UnderlineComponentBuilder: CuePayloadComponentBuilder {
+private struct UnderlineComponentBuilder: CuePayloadComponentBuilder, Sendable {
     private let classesReference = Reference(Substring.self)
     private let textReference = Reference(Substring.self)
 
@@ -219,7 +219,7 @@ private struct UnderlineComponentBuilder: CuePayloadComponentBuilder {
     }
 }
 
-private struct RubyComponentBuilder: CuePayloadComponentBuilder {
+private struct RubyComponentBuilder: CuePayloadComponentBuilder, Sendable {
     private let classesReference = Reference(Substring.self)
     private let textReference = Reference(Substring.self)
 
@@ -256,7 +256,7 @@ private struct RubyComponentBuilder: CuePayloadComponentBuilder {
     }
 }
 
-private struct RubyTextComponentBuilder: CuePayloadComponentBuilder {
+private struct RubyTextComponentBuilder: CuePayloadComponentBuilder, Sendable {
     private let classesReference = Reference(Substring.self)
     private let textReference = Reference(Substring.self)
 
@@ -293,7 +293,7 @@ private struct RubyTextComponentBuilder: CuePayloadComponentBuilder {
     }
 }
 
-private struct ClassComponentBuilder: CuePayloadComponentBuilder {
+private struct ClassComponentBuilder: CuePayloadComponentBuilder, Sendable {
     private let nameReference = Reference(Substring.self)
     private let textReference = Reference(Substring.self)
 
@@ -330,7 +330,7 @@ private struct ClassComponentBuilder: CuePayloadComponentBuilder {
     }
 }
 
-private struct VoiceComponentBuilder: CuePayloadComponentBuilder {
+private struct VoiceComponentBuilder: CuePayloadComponentBuilder, Sendable {
     private let classesReference = Reference(Substring.self)
     private let nameReference = Reference(Substring.self)
     private let textReference = Reference(Substring.self)
@@ -372,7 +372,7 @@ private struct VoiceComponentBuilder: CuePayloadComponentBuilder {
     }
 }
 
-private struct TimestampComponentBuilder: CuePayloadComponentBuilder {
+private struct TimestampComponentBuilder: CuePayloadComponentBuilder, Sendable {
     private let timeReference = Reference(WebVTT.Time.self)
     private let textReference = Reference(Substring.self)
 
@@ -425,7 +425,7 @@ private struct TimestampComponentBuilder: CuePayloadComponentBuilder {
     }
 }
 
-private struct LanguageComponentBuilder: CuePayloadComponentBuilder {
+private struct LanguageComponentBuilder: CuePayloadComponentBuilder, Sendable {
     private let classesReference = Reference(Substring.self)
     private let localeReference = Reference(Substring.self)
     private let textReference = Reference(Substring.self)
@@ -468,7 +468,7 @@ private struct LanguageComponentBuilder: CuePayloadComponentBuilder {
     }
 }
 
-private struct CueStyleComponentBuilder: CuePayloadComponentBuilder {
+private struct CueStyleComponentBuilder: CuePayloadComponentBuilder, Sendable {
     private let nameReference = Reference(Substring.self)
     private let textReference = Reference(Substring.self)
 

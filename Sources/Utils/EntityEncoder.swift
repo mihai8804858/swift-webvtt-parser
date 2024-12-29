@@ -1,6 +1,6 @@
 import Foundation
 
-struct EntityCoder {
+struct EntityCoder: Sendable {
     private static let requiredDecodeMapping: [(String, String)] = [
         ("&amp;", "&"),
         ("&nbsp;", "\u{00a0}"),
