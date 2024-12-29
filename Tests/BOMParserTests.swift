@@ -13,6 +13,6 @@ final class BOMParserTests: XCTestCase {
                 plain("\ntext0")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

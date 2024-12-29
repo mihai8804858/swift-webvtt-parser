@@ -11,7 +11,7 @@ final class SingatureParsingTests: XCTestCase {
         let expected = WebVTT {
             note("This is a note")
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_no_newlines() throws {

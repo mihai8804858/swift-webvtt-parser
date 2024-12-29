@@ -130,6 +130,6 @@ final class TagsParsingTests: XCTestCase {
                 plain("c")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

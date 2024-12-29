@@ -25,6 +25,6 @@ final class IDsParsingTests: XCTestCase {
                 plain("text4")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

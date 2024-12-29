@@ -35,6 +35,6 @@ final class StylesheetsParsingTests: XCTestCase {
                 plain("text")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

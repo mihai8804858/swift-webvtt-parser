@@ -277,7 +277,7 @@ final class WebVTTParserTests: XCTestCase {
         }
         let parser = WebVTTParser()
         let vtt = try parser.parse(content)
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     // swiftlint:disable:next function_body_length
@@ -444,7 +444,7 @@ final class WebVTTParserTests: XCTestCase {
         }
 
         let content = try WebVTTParser().print(vtt)
-        XCTAssertNoDifference(content, """
+        expectNoDifference(content, """
         WEBVTT - Subtitle header goes here
         Kind: captions
         Language: en-US

@@ -52,6 +52,6 @@ final class TimestampsParsingTests: XCTestCase {
                 }
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

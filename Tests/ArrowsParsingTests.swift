@@ -32,6 +32,6 @@ final class ArrowsParsingTests: XCTestCase {
             unknown("00:00:00.000 - -->")
             unknown("00:00:00.000 -- -->")
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

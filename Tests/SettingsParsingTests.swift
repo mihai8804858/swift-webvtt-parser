@@ -40,7 +40,7 @@ final class SettingsParsingTests: XCTestCase {
                 plain("text9")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_settings_line() throws {
@@ -97,7 +97,7 @@ final class SettingsParsingTests: XCTestCase {
                 plain("valid")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_settings_vertical() throws {
@@ -133,7 +133,7 @@ final class SettingsParsingTests: XCTestCase {
             invalid7
             """)
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_settings_size() throws {
@@ -198,7 +198,7 @@ final class SettingsParsingTests: XCTestCase {
                 plain("invalid15")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_settings_region() throws {
@@ -246,7 +246,7 @@ final class SettingsParsingTests: XCTestCase {
                 plain("invalid8")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_settings_multiple() throws {
@@ -273,7 +273,7 @@ final class SettingsParsingTests: XCTestCase {
                 plain("text1")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_settings_position() throws {
@@ -306,6 +306,6 @@ final class SettingsParsingTests: XCTestCase {
                 plain("text7")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

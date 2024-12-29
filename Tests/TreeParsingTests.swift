@@ -72,6 +72,6 @@ final class TreeParsingTests: XCTestCase {
                 plain("test")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

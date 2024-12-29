@@ -26,6 +26,6 @@ final class TextParsingTests: XCTestCase {
             }
             unknown("text2")
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

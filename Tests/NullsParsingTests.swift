@@ -83,6 +83,6 @@ final class NullsParsingTests: XCTestCase {
             unknown("00:00:00.000 --> 00:00:01.0\00\ninvalid")
             unknown("00:00:00.000 --> 00:00:01.00\0\ninvalid")
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

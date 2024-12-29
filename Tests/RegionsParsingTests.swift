@@ -43,7 +43,7 @@ final class RegionsParsingTests: XCTestCase {
                 plain("\nvalid")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_lines() throws {
@@ -134,7 +134,7 @@ final class RegionsParsingTests: XCTestCase {
                 plain("text")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_old() throws {
@@ -165,7 +165,7 @@ final class RegionsParsingTests: XCTestCase {
                 plain("text1")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_scroll() throws {
@@ -210,7 +210,7 @@ final class RegionsParsingTests: XCTestCase {
                 plain("text")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_regionanchor() throws {
@@ -331,7 +331,7 @@ final class RegionsParsingTests: XCTestCase {
                 plain("text")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_viewportanchor() throws {
@@ -455,7 +455,7 @@ final class RegionsParsingTests: XCTestCase {
                 plain("text")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }
 

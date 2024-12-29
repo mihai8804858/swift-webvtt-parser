@@ -79,6 +79,6 @@ final class EntitiesParsingTests: XCTestCase {
                 plain("¬")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

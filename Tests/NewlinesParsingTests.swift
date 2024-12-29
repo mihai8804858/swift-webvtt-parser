@@ -22,6 +22,6 @@ final class NewlinesParsingTests: XCTestCase {
                 plain("text3")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

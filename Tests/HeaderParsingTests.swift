@@ -13,7 +13,7 @@ final class HeaderParsingTests: XCTestCase {
                 plain("text")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_header_space() throws {

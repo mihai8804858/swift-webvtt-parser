@@ -22,6 +22,6 @@ final class WhitespaceCharsTests: XCTestCase {
                 plain("text3")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }

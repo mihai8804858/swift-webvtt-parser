@@ -46,7 +46,7 @@ final class TimingsParsingTests: XCTestCase {
                 plain("text5")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_timings_eof() throws {
@@ -56,7 +56,7 @@ final class TimingsParsingTests: XCTestCase {
         let expected = WebVTT {
             unknown("00:00:00.000 -->")
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_timings_garbage() throws {
@@ -129,7 +129,7 @@ final class TimingsParsingTests: XCTestCase {
             unknown("00:00:00,000 --> 00:00:01,000\ninvalid")
 
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_timings_negative() throws {
@@ -162,7 +162,7 @@ final class TimingsParsingTests: XCTestCase {
                 plain("text3")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_timings_omitted_hours() throws {
@@ -189,7 +189,7 @@ final class TimingsParsingTests: XCTestCase {
                 plain("text2")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_timings_too_long() throws {
@@ -233,7 +233,7 @@ final class TimingsParsingTests: XCTestCase {
                 plain("text9")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 
     func test_parse_timings_too_short() throws {
@@ -300,6 +300,6 @@ final class TimingsParsingTests: XCTestCase {
                 plain("text12")
             }
         }
-        XCTAssertNoDifference(vtt, expected)
+        expectNoDifference(vtt, expected)
     }
 }
