@@ -1,12 +1,12 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
 // swiftlint:disable:next type_body_length
-final class WebVTTParserTests: XCTestCase {
+struct WebVTTParserTests {
     // swiftlint:disable:next function_body_length
-    func test_parse() throws {
+    @Test func parse() throws {
         let content = """
         WEBVTT - Subtitle header goes here
         Kind: captions
@@ -281,7 +281,7 @@ final class WebVTTParserTests: XCTestCase {
     }
 
     // swiftlint:disable:next function_body_length
-    func test_print() throws {
+    @Test func print() throws {
         let vtt = WebVTT(header: WebVTT.Header(
             text: "- Subtitle header goes here",
             metadata: [

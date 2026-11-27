@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class SingatureParsingTests: XCTestCase {
-    func test_parse_bom() throws {
+struct SingatureParsingTests {
+    @Test func parseBom() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("signature-bom.vtt")
         let vtt = try parser.parse(contents)
@@ -14,39 +14,39 @@ final class SingatureParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_no_newlines() throws {
+    @Test func parseNoNewlines() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("signature-no-newline.vtt")
-        XCTAssertThrowsError(try parser.parse(contents))
+        #expect(throws: (any Error).self) { try parser.parse(contents) }
     }
 
-    func test_parse_space_no_newlines() throws {
+    @Test func parseSpaceNoNewlines() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("signature-space-no-newline.vtt")
-        XCTAssertThrowsError(try parser.parse(contents))
+        #expect(throws: (any Error).self) { try parser.parse(contents) }
     }
 
-    func test_parse_tab_no_newlines() throws {
+    @Test func parseTabNoNewlines() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("signature-tab-no-newline.vtt")
-        XCTAssertThrowsError(try parser.parse(contents))
+        #expect(throws: (any Error).self) { try parser.parse(contents) }
     }
 
-    func test_parse_space() throws {
+    @Test func parseSpace() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("signature-space.vtt")
-        XCTAssertThrowsError(try parser.parse(contents))
+        #expect(throws: (any Error).self) { try parser.parse(contents) }
     }
 
-    func test_parse_tab() throws {
+    @Test func parseTab() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("signature-tab.vtt")
-        XCTAssertThrowsError(try parser.parse(contents))
+        #expect(throws: (any Error).self) { try parser.parse(contents) }
     }
 
-    func test_parse_timings() throws {
+    @Test func parseTimings() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("signature-timings.vtt")
-        XCTAssertThrowsError(try parser.parse(contents))
+        #expect(throws: (any Error).self) { try parser.parse(contents) }
     }
 }

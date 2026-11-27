@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class TimingsParsingTests: XCTestCase {
-    func test_parse_timings_60() throws {
+struct TimingsParsingTests {
+    @Test func parseTimings60() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("timings-60.vtt")
         let vtt = try parser.parse(contents)
@@ -49,7 +49,7 @@ final class TimingsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_timings_eof() throws {
+    @Test func parseTimingsEof() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("timings-eof.vtt")
         let vtt = try parser.parse(contents)
@@ -59,7 +59,7 @@ final class TimingsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_timings_garbage() throws {
+    @Test func parseTimingsGarbage() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("timings-garbage.vtt")
         let vtt = try parser.parse(contents)
@@ -132,7 +132,7 @@ final class TimingsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_timings_negative() throws {
+    @Test func parseTimingsNegative() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("timings-negative.vtt")
         let vtt = try parser.parse(contents)
@@ -165,7 +165,7 @@ final class TimingsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_timings_omitted_hours() throws {
+    @Test func parseTimingsOmittedHours() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("timings-omitted-hours.vtt")
         let vtt = try parser.parse(contents)
@@ -192,7 +192,7 @@ final class TimingsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_timings_too_long() throws {
+    @Test func parseTimingsTooLong() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("timings-too-long.vtt")
         let vtt = try parser.parse(contents)
@@ -236,7 +236,7 @@ final class TimingsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_timings_too_short() throws {
+    @Test func parseTimingsTooShort() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("timings-too-short.vtt")
         let vtt = try parser.parse(contents)

@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class HeaderParsingTests: XCTestCase {
-    func test_parse_header_garbage() throws {
+struct HeaderParsingTests {
+    @Test func parseHeaderGarbage() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("header-garbage.vtt")
         let vtt = try parser.parse(contents)
@@ -16,21 +16,21 @@ final class HeaderParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_header_space() throws {
+    @Test func parseHeaderSpace() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("header-space.vtt")
-        XCTAssertThrowsError(try parser.parse(contents))
+        #expect(throws: (any Error).self) { try parser.parse(contents) }
     }
 
-    func test_parse_header_tab() throws {
+    @Test func parseHeaderTab() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("header-tab.vtt")
-        XCTAssertThrowsError(try parser.parse(contents))
+        #expect(throws: (any Error).self) { try parser.parse(contents) }
     }
 
-    func test_parse_header_timings() throws {
+    @Test func parseHeaderTimings() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("header-timings.vtt")
-        XCTAssertThrowsError(try parser.parse(contents))
+        #expect(throws: (any Error).self) { try parser.parse(contents) }
     }
 }

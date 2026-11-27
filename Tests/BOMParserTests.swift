@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class BOMParserTests: XCTestCase {
-    func test_parse_bom() throws {
+struct BOMParserTests {
+    @Test func parseBom() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("bom.vtt")
         let vtt = try parser.parse(contents)

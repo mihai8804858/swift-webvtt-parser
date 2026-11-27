@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class ArrowsParsingTests: XCTestCase {
-    func test_parse_arrows() throws {
+struct ArrowsParsingTests {
+    @Test func parseArrows() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("arrows.vtt")
         let vtt = try parser.parse(contents)

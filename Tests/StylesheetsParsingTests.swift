@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class StylesheetsParsingTests: XCTestCase {
-    func test_parse_stylesheets() throws {
+struct StylesheetsParsingTests {
+    @Test func parseStylesheets() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("stylesheets.vtt")
         let vtt = try parser.parse(contents)

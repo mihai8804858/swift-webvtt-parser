@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class TimestampsParsingTests: XCTestCase {
-    func test_parse_timestamps() throws {
+struct TimestampsParsingTests {
+    @Test func parseTimestamps() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("timestamps.vtt")
         let vtt = try parser.parse(contents)

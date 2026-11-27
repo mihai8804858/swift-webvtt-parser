@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class WhitespaceCharsTests: XCTestCase {
-    func test_parse_whitespace_chars() throws {
+struct WhitespaceCharsTests {
+    @Test func parseWhitespaceChars() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("whitespace-chars.vtt")
         let vtt = try parser.parse(contents)

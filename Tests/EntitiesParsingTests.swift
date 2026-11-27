@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class EntitiesParsingTests: XCTestCase {
-    func test_parse_entities() throws {
+struct EntitiesParsingTests {
+    @Test func parseEntities() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("entities.vtt")
         let vtt = try parser.parse(contents)

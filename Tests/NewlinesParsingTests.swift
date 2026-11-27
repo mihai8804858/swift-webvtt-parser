@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class NewlinesParsingTests: XCTestCase {
-    func test_parse_newlines() throws {
+struct NewlinesParsingTests {
+    @Test func parseNewlines() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("newlines.vtt")
         let vtt = try parser.parse(contents)

@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class TreeParsingTests: XCTestCase {
-    func test_parse_tree() throws {
+struct TreeParsingTests {
+    @Test func parseTree() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("tree.vtt")
         let vtt = try parser.parse(contents)

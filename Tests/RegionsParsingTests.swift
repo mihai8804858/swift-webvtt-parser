@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class RegionsParsingTests: XCTestCase {
-    func test_parse_id() throws {
+struct RegionsParsingTests {
+    @Test func parseId() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("regions-id.vtt")
         let vtt = try parser.parse(contents)
@@ -46,7 +46,7 @@ final class RegionsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_lines() throws {
+    @Test func parseLines() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("regions-lines.vtt")
         let vtt = try parser.parse(contents)
@@ -137,7 +137,7 @@ final class RegionsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_old() throws {
+    @Test func parseOld() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("regions-old.vtt")
         let vtt = try parser.parse(contents)
@@ -168,7 +168,7 @@ final class RegionsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_scroll() throws {
+    @Test func parseScroll() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("regions-scroll.vtt")
         let vtt = try parser.parse(contents)
@@ -213,7 +213,7 @@ final class RegionsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_regionanchor() throws {
+    @Test func parseRegionanchor() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("regions-regionanchor.vtt")
         let vtt = try parser.parse(contents)
@@ -334,7 +334,7 @@ final class RegionsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_viewportanchor() throws {
+    @Test func parseViewportanchor() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("regions-viewportanchor.vtt")
         let vtt = try parser.parse(contents)

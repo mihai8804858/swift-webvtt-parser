@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class SettingsParsingTests: XCTestCase {
-    func test_parse_settings_align() throws {
+struct SettingsParsingTests {
+    @Test func parseSettingsAlign() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("settings-align.vtt")
         let vtt = try parser.parse(contents)
@@ -43,7 +43,7 @@ final class SettingsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_settings_line() throws {
+    @Test func parseSettingsLine() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("settings-line.vtt")
         let vtt = try parser.parse(contents)
@@ -100,7 +100,7 @@ final class SettingsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_settings_vertical() throws {
+    @Test func parseSettingsVertical() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("settings-vertical.vtt")
         let vtt = try parser.parse(contents)
@@ -136,7 +136,7 @@ final class SettingsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_settings_size() throws {
+    @Test func parseSettingsSize() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("settings-size.vtt")
         let vtt = try parser.parse(contents)
@@ -201,7 +201,7 @@ final class SettingsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_settings_region() throws {
+    @Test func parseSettingsRegion() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("settings-region.vtt")
         let vtt = try parser.parse(contents)
@@ -249,7 +249,7 @@ final class SettingsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_settings_multiple() throws {
+    @Test func parseSettingsMultiple() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("settings-multiple.vtt")
         let vtt = try parser.parse(contents)
@@ -276,7 +276,7 @@ final class SettingsParsingTests: XCTestCase {
         expectNoDifference(vtt, expected)
     }
 
-    func test_parse_settings_position() throws {
+    @Test func parseSettingsPosition() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("settings-position.vtt")
         let vtt = try parser.parse(contents)

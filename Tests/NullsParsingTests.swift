@@ -1,10 +1,10 @@
 @testable import WebVTTParser
 import Parsing
 import CustomDump
-import XCTest
+import Testing
 
-final class NullsParsingTests: XCTestCase {
-    func test_parse_nulls() throws {
+struct NullsParsingTests {
+    @Test func parseNulls() throws {
         let parser = WebVTTParser()
         let contents = try subtitleContents("nulls.vtt")
         let vtt = try parser.parse(contents)
